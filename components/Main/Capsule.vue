@@ -14,10 +14,13 @@
                         </div>
                     </div>
                     <div class="right">
+                        <div class="avatar-section">
+                            <a href="/settings">
+                                <img src="~/assets/img/fluense.png" alt="avatar" class="imaged w100 rounded">
+                            </a>
+                        </div>
                         <div class="input-group mb-2">
-                            <div>
-                                {{account}}
-                            </div>
+                            {{account}}
                             <div>
                                  ({{address}})
                                 <a href="https://dash.fluence.dev/">
