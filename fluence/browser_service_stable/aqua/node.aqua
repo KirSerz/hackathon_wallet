@@ -10,33 +10,38 @@ service NodeValidatorService("node"):
     get_transaction(tx: string) -> string
     get_signs_of_transaction(tx: string) -> string
 
-func sendTestTx(msg: string):
+func sendTestTx(msg: string) -> string:
     NodeValidatorService.receive_tx(msg)
 
-func sendTx(msg: string, peerId: string, relayPeerId: string):
+func sendTx(msg: string, peerId: string, relayPeerId: string) -> string:
     on peerId via relayPeerId:
-        NodeValidatorService.receive_tx(msg)
+        res <- NodeValidatorService.receive_tx(msg)
+    <- res
 
-func confirmTx(msg: string, peerId: string, relayPeerId: string):
+func confirmTx(msg: string, peerId: string, relayPeerId: string) -> string:
     on peerId via relayPeerId:
-        NodeValidatorService.receive_signs(msg)
-
+        res <- NodeValidatorService.receive_signs(msg)
+    <- res
+    
 func getLatest(address: string, peerId: string, relayPeerId: string) -> string:
     on peerId via relayPeerId:
         res <- NodeValidatorService.get_latest_tx_for_address(address)
     <- res
 
-func getAddressInfo(address: string, peerId: string, relayPeerId: string):
+func getAddressInfo(address: string, peerId: string, relayPeerId: string) -> string:
     on peerId via relayPeerId:
-        NodeValidatorService.get_address_info(address)
+        res <- NodeValidatorService.get_address_info(address)
+    <- res
 
-func getTransaction(tx: string, peerId: string, relayPeerId: string):
+func getTransaction(tx: string, peerId: string, relayPeerId: string) -> string:
     on peerId via relayPeerId:
-        NodeValidatorService.get_transaction(tx)
+        res <- NodeValidatorService.get_transaction(tx)
+    <- res
 
-func getSignsOfTransaction(tx: string, peerId: string, relayPeerId: string):
+func getSignsOfTransaction(tx: string, peerId: string, relayPeerId: string) -> string:
     on peerId via relayPeerId:
-        NodeValidatorService.get_signs_of_transaction(tx)
+        res <- NodeValidatorService.get_signs_of_transaction(tx)
+    <- res
 
 -- func advertiseMyself(topic: string) -> string:
 --     relay_id: ?string

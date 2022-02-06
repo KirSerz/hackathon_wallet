@@ -107,25 +107,13 @@ async function main() {
             }
         },
         get_address_info(address) {
-            if (address in state['address_latest_txids_and_locks']) {
-                return JSON.stringify({'address': address, 'balance': state['balances'][address], })
-            } else {
-                return '0';
-            }
+            return 'wip'; //JSON.stringify(state['tx_validate_signs'][tx]);
         },
         get_transaction(tx) {
-            if (tx in state['address_latest_txids_and_locks']) {
-                return state['address_latest_txids_and_locks'][tx]['latest_txid'];
-            } else {
-                return '0';
-            }
+            return JSON.stringify(state['txs'][tx]);
         }, 
         get_signs_of_transaction(tx) {
-            if (tx in state['address_latest_txids_and_locks']) {
-                return state['address_latest_txids_and_locks'][tx]['latest_txid'];
-            } else {
-                return '0';
-            }
+            return JSON.stringify(state['tx_validate_signs'][tx]);
         }
 
     });
