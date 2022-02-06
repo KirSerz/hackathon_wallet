@@ -1,19 +1,20 @@
 <template>
     <div class="section mt-4">
-        <div class="section-heading">
+        <div v-if="!is_all" class="section-heading">
             <h2 class="title">Last Transactions</h2>
             <a href="/transactions" class="link">All</a>
         </div>
         <div class="transactions" >
-            
-            <Transaction
+            <ItemTransaction
                 v-for="(item, index) in ten_transactions"
                 :key="index"
                 :to="item.to"
                 :amount="item.amount"
                 :from="item.from"
                 :sign="item.sign"
+                :txid="item.txid"
                 :prev_txid="item.prev_txid"
+                :type="item.type"
             />
             <!-- * item -->
         </div>
@@ -23,12 +24,12 @@
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex';
 
-import Transaction from '~/components/Main/Transaction'
+import ItemTransaction from '~/components/Main/ItemTransaction'
 
 export default {
   name: 'Transactions',
   components: {
-      Transaction,
+      ItemTransaction,
   },
   props: {
     is_all: {
@@ -42,7 +43,10 @@ export default {
   },
   computed: {
     ...mapState('page', ['popup', 'transactions']),
+    
     ten_transactions(){
+      console.log('transactions')
+      console.log(this.transactions)
         if (this.is_all)
             return this.transactions
         return this.transactions.slice(0, 10)

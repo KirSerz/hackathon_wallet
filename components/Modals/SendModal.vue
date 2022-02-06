@@ -1,11 +1,11 @@
 <template>
-    <transition class="popup-withdraw">
+    <transition class="popup-send">
         <div v-show="isVisible" >
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Template Modal</h5>
-                          <div type="buttom" @click= "hidePopup()" style = "width:11px; height:5px;" >
+                        <h5 class="modal-title">Send</h5>
+                          <div type="button" @click= "hidePopup()" style = "width:11px; height:5px;" >
                             <svg 
                               viewBox="0 0 10 10">
                               <path
@@ -32,7 +32,14 @@
                             </div>
 
                             <div class="form-group basic">
-                                <button type="button" class="btn btn-primary btn-block btn-lg" data-bs-dismiss="modal">Deposit</button>
+                                <div 
+                                  type="button" 
+                                  class="btn btn-primary btn-block btn-lg" 
+                                  data-bs-dismiss="modal"
+                                  @click="pageSendAmount()"
+                                >
+                                  Deposit
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -45,21 +52,21 @@
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex';
 export default {
-  name: 'TemplateModal',
+  name: 'SendModal',
   components: {
   },
   props: {
   },
   data () {
     return {
-        title: 'popup-withdraw',
+        title: 'popup-send',
         address: null,
         amount: null,
         isVisible: false
     }
   },
   computed: {
-    ...mapState('page', ['popup', 'symbol']),
+    ...mapState('page', ['popup', 'symbol',]),
  },
  
   watch: {
@@ -67,6 +74,7 @@ export default {
       if (this.title == this.popup) {
         this.showPopup();
       }
+      else  this.isVisible = false;
       if (!this.popup) {
         this.hidePopup();
       }
@@ -74,16 +82,28 @@ export default {
   },
 
   methods: {
+    ...mapActions('page', [
+      'SendAmount'
+    ]),
+
     ...mapMutations('page', ['setPopup']),
 
+    pageSendAmount(){
+      this.SendAmount({'address':address,'amount':amount})
+    },
+
+    keyUp(e) {
+      if (e.keyCode == 27) {
+        this.hidePopup();
+      }
+    },
+
     showPopup() {
-      console.log('showPopup')
       document.addEventListener('keyup', this.keyUp);
       this.isVisible = true;
     },
 
     hidePopup() {
-      console.log('hidePopup')
       document.removeEventListener('keyup', this.keyUp);
       this.setPopup(null);
       this.isVisible = false;

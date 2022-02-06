@@ -32,5 +32,13 @@ export default {
     setTransaction(state, value){
         state.transaction = value
     },
+    setTransactionCount(state, value){
+        state.transaction_count = value
+    },
+    pushTransaction(state, value){
+        let buff = state.transactions;
+        buff.push(value);
+        state.transactions = buff;
+    },
 };
   

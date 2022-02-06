@@ -3,7 +3,9 @@
     <div id="loader" style="display: none;">
         <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon">
     </div>
-    <appHeader/>
+    <appHeader
+        title='Settings'
+    />
     <Capsule/>
   </div>
 </template>
@@ -15,10 +17,10 @@ import '~/assets/css/splide.min.css'
 import '~/assets/css/style.css'
 
 export default {
-  name: 'Settings',
-  components: {
-    appHeader,
-    Capsule,
-  },
-}
+    name: 'Settings',
+    components: {
+      appHeader,
+      Capsule,
+    },
+  }
 </script>

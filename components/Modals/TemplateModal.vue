@@ -1,11 +1,11 @@
 <template>
-    <transition class="popup-withdraw">
+    <transition class="popup-template">
         <div v-show="isVisible" >
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Template Modal</h5>
-                          <div type="buttom" @click= "hidePopup()" style = "width:11px; height:5px;" >
+                        <h5 class="modal-title">Withdrawl</h5>
+                          <div type="button" @click= "hidePopup()" style = "width:11px; height:5px;" >
                             <svg 
                               viewBox="0 0 10 10">
                               <path
@@ -19,7 +19,7 @@
                             <div class="form-group basic">
                                 <div class="input-wrapper">
                                     <label class="label" for="account1">Address</label>
-                                    <input type="text" class="form-control" placeholder="Enter Address"  v-model="address">
+                                    <input v-model="address" type="text" class="form-control" placeholder="Enter Address"  >
                                 </div>
                             </div>
 
@@ -27,12 +27,19 @@
                                 <label class="label">Enter Amount</label>
                                 <div class="input-group mb-2">
                                     <span class="input-group-text" id="basic-addona1">{{symbol}}</span>
-                                    <input v-model="amount" type="text" class="form-control" placeholder="Enter an amount">
+                                    <input v-model="amount" type="number" class="form-control" placeholder="Enter an amount">
                                 </div>
                             </div>
 
                             <div class="form-group basic">
-                                <button type="button" class="btn btn-primary btn-block btn-lg" data-bs-dismiss="modal">Deposit</button>
+                                <div 
+                                  type="button" 
+                                  class="btn btn-primary btn-block btn-lg" 
+                                  data-bs-dismiss="modal"
+                                  @click="pageWithdrawl()"
+                                >
+                                  Deposit
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -45,21 +52,21 @@
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex';
 export default {
-  name: 'TemplateModal',
+  name: 'Template',
   components: {
   },
   props: {
   },
   data () {
     return {
-        title: 'popup-withdraw',
+        title: 'popup-template',
         address: null,
-        amount: null,
+        amount: 0,
         isVisible: false
     }
   },
   computed: {
-    ...mapState('page', ['popup', 'symbol']),
+    ...mapState('page', ['popup', 'symbol',]),
  },
  
   watch: {
@@ -67,6 +74,7 @@ export default {
       if (this.title == this.popup) {
         this.showPopup();
       }
+      else  this.isVisible = false;
       if (!this.popup) {
         this.hidePopup();
       }
@@ -74,16 +82,31 @@ export default {
   },
 
   methods: {
+    ...mapActions('page', [
+      'Withdrawl'
+    ]),
+
     ...mapMutations('page', ['setPopup']),
 
+    pageWithdrawl(){
+      this.Withdrawl({
+        'address':this.address,
+        'amount':this.amount
+      })
+    },
+    
+    keyUp(e) {
+      if (e.keyCode == 27) {
+        this.hidePopup();
+      }
+    },
+
     showPopup() {
-      console.log('showPopup')
       document.addEventListener('keyup', this.keyUp);
       this.isVisible = true;
     },
 
     hidePopup() {
-      console.log('hidePopup')
       document.removeEventListener('keyup', this.keyUp);
       this.setPopup(null);
       this.isVisible = false;

@@ -1,5 +1,4 @@
 <template>
-    <!-- App Capsule -->
     <div id="Capsule">
 
         <div class="section mt-3 text-center">
@@ -49,7 +48,6 @@
             </li>
         </ul>
     </div>
-    <!-- * App Capsule -->
 </template> 
 
 
