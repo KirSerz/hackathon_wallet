@@ -1,4 +1,6 @@
 module Messaging declares NodeValidatorService, sendTestTx, sendTx, confirmTx, getLatest
+-- import initTopicAndSubscribe, findSubscribers from "@fluencelabs/aqua-dht/pubsub.aqua"
+-- import "@fluencelabs/aqua-dht/dht.aqua"
 
 service NodeValidatorService("node"):
     receive_tx(str: string) -> string
@@ -19,3 +21,16 @@ func confirmTx(msg: string, peerId: string, relayPeerId: string):
 func getLatest(address: string, peerId: string, relayPeerId: string):
     on peerId via relayPeerId:
         NodeValidatorService.get_latest_tx_for_address(address)
+
+-- func advertiseMyself(topic: string) -> string:
+--     relay_id: ?string
+--     relay_id <<- HOST_PEER_ID
+--     initTopicAndSubscribe(topic, "myValue", relay_id, nil)
+--     <- "ok"
+
+-- func sendEveryone(topic: string, msg: string) -> string:
+--     on HOST_PEER_ID:
+--         subscribers <- findSubscribers(topic)
+--         for sub <- subscribers par:
+--             callSubscriber(sub, msg)
+--     <- "ok"
