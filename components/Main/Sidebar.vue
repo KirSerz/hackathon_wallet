@@ -13,7 +13,7 @@
                         <div class="mb-1"><img src="assets/img/icon/192x192.png" alt="image" class="imaged w64 mb-2">
                         </div>
                         <div>
-                            Install <strong>Finapp</strong> on your iPhone's home screen.
+                            Install <strong>Wallet</strong> on your iPhone's home screen.
                         </div>
                         <div>
                             Tap <i name="share-outline" role="img" class="md hydrated" aria-label="share outline"></i> and Add to homescreen.
