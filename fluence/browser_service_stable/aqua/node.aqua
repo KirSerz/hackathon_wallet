@@ -1,7 +1,9 @@
 module Messaging declares NodeValidatorService, sendTestTx, sendTx
 
 service NodeValidatorService("node"):
-    receive_tx(str: string)
+    receive_tx(str: string) -> string
+    receive_signs(str: string) -> string
+    get_latest_tx_for_address(address: string) -> string
 
 func sendTestTx(msg: string):
     NodeValidatorService.receive_tx(msg)
