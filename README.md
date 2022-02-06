@@ -5,9 +5,10 @@ User can:
 - generate eth-like private key -> address
 - connect to any of nodes and get information about balance, last tx
 - send amount from balance to another address 
+
 Two steps for send:
-1) client send signed tx to all nodes and receive sign as approval from each
-2) client notifies all nodes that
+- client send signed tx to all nodes and receive sign as approval from each
+- client notifies all nodes that
 
 
 ## functions
@@ -32,7 +33,7 @@ we check that lock exists for such txid, process txid, delete lock, switch tx fr
 ```
 
 TODO:
-- info functions
+- info functions (done, but we've found fluence bug)/
 - cross-peer sync
 - discovery by dht
 
