@@ -1,6 +1,6 @@
 import { Fluence, KeyPair } from '@fluencelabs/fluence';
 import { krasnodar } from '@fluencelabs/fluence-network-environment';
-import { sendTx } from './_aqua/export';
+import { sendTx, getLatest } from './_aqua/export';
 import {ethers} from 'ethers';
 import {createTx, createNodePk} from './logic';
 
@@ -20,7 +20,9 @@ async function main() {
     let wallet = new ethers.Wallet(pk);
     console.log('Loaded addres: ' + wallet.address);
     // TODO: get latest tx
-    let tx = await createTx(wallet.address, '0x184f8d267CBD46F94fefE24597f21Aee53F829aa', 2, '0xb20ef37e74f703af67bcb7369078e309de46b8bcd71ce9aeb54458828487928b', pk);
+    let latest_tx = await getLatest(wallet.address, '12D3KooWBecVqhrKqVkJ1ALtVTYRi5vmbqKxQiT2EfnNgNdBWzqS', '12D3KooWJd3HaMJ1rpLY1kQvcjRPEvnDwcXrH8mJvk7ypcZXqXGE');
+    console.log(latest_tx);
+    let tx = await createTx(wallet.address, '0x184f8d267CBD46F94fefE24597f21Aee53F829aa', 2, latest_tx, pk);
     console.log(await sendTx(JSON.stringify(tx), '12D3KooWBecVqhrKqVkJ1ALtVTYRi5vmbqKxQiT2EfnNgNdBWzqS', '12D3KooWJd3HaMJ1rpLY1kQvcjRPEvnDwcXrH8mJvk7ypcZXqXGE'));
     
     process.stdin.setRawMode(true);
