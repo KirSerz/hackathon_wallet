@@ -50,7 +50,7 @@
                             <div class="icon-wrapper bg-info">
                                 <i name="arrow-down-outline" role="img" class="md hydrated" aria-label="arrow down outline"></i>
                             </div>
-                            <strong>Withdraw</strong>
+                            <strong>Deposit</strong>
                         </div>
                     </div>
                     <div class="item">

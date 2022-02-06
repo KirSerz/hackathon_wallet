@@ -38,7 +38,7 @@
                                   data-bs-dismiss="modal"
                                   @click="pageSendAmount()"
                                 >
-                                  Deposit
+                                  Send
                                 </div>
                             </div>
                         </div>

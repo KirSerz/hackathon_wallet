@@ -10,7 +10,7 @@ service NodeValidatorService("node"):
     get_transaction(tx: string) -> string
     get_signs_of_transaction(tx: string) -> string
 
-func sendTestTx(msg: string) -> string:
+func sendTestTx(msg: string):
     NodeValidatorService.receive_tx(msg)
 
 func sendTx(msg: string, peerId: string, relayPeerId: string) -> string:

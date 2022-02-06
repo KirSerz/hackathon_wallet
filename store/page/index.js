@@ -5,24 +5,22 @@ const store = {
   // namespaced: true, //мб раскоментить
   state() {
     return {
-        txid_list: ['21ds12312sd12312ws12', '21ds12312sd12312ws12', '21ds12312sd12312ws12', '21ds12312sd12312ws12', '21ds12312sd12312ws12', '21ds12312sd12312ws12', '21ds12312sd12312ws12', ],
-        account: 'account 1',
-        txid: '0x123v23f123412412vdwe2323w',
+        txid_list: ['0xb20ef37e74f703af67bcb7369078e309de46b8bcd71ce9aeb54458828487928b', '0x4163effA99D027BEe32539D1783932F4D20469de',  ],
+        account: 'Account 1',
+        txid: '0xb20ef37e74f703af67bcb7369078e309de46b8bcd71ce9aeb54458828487928b',
         address: null,
-        balance: 0,
-        transaction_count: 0,
+        balance: 1000,
+        transaction_count: 3,
         private_key: null,
 
         popup: null,
         symbol: 'AQUAS',
         nodes: [
-            '0x123v23f123412412vdwe2323w', 
-            '0x123v23f123412412vdwe2323w', 
-            '0x123v23f123412412vdwe2323w', 
+            '12D3KooWBecVqhrKqVkJ1ALtVTYRi5vmbqKxQiT2EfnNgNdBWzqS'
         ],
 
         transactions:[],
-        income: 0,
+        income: 2,
         expenses: 0,
         transaction: {
             'amount':0,
