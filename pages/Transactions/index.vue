@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="loader" style="display: none;">
-        <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon">
+        <img src="~/assets/img/loading-icon.png" alt="icon" class="loading-icon">
     </div>
     <appHeader    
         title='Transactions'
@@ -36,14 +36,14 @@ export default {
   },
   watch: {
     address(){
-      this.getTransactionsInfo()
+      this.getAddressTransactions()
     }
   },
   mounted() {
-    this.getTransactionsInfo()
+    this.getAddressTransactions()
   },
   methods: {
-    ...mapActions('page', ['getTransactionsInfo']),
+    ...mapActions('page', ['getAddressTransactions']),
   }
 }
 </script>
