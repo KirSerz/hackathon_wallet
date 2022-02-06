@@ -11,7 +11,7 @@ const store = {
         address: null,
         balance: 0,
         transaction_count: 0,
-        private_key: 0,
+        private_key: null,
 
         popup: null,
         symbol: 'AQUAS',

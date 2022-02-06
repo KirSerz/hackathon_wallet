@@ -30,6 +30,7 @@
                     <label for="formGroupExampleInput">Your Address</label>
                     <input
                         type="text" 
+                        :value= "address_t"
                         class="form-control" 
                         placeholder="Your Address"
                         disabled 
@@ -53,12 +54,27 @@ export default {
     },
     data () {
         return {
+            address_t:null,
             key:null,
             message:null,
         }
     },
     computed: {
-        ...mapState('page', ['popup', 'account', 'address', 'symbol']),
+        ...mapState('page', ['popup', 'account', 'address', 'symbol', 'private_key']),
+    },
+    watch: {
+        private_key(){
+            this.key = this.private_key
+        },
+        address(){
+            console.log(this.address)
+            this.address_t = this.address
+        }
+    },
+    mounted() {
+        
+        this.key = this.private_key
+        this.address_t = this.address
     },
     methods: {
         ...mapActions('page', ['generateAddress']),

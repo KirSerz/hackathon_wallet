@@ -3,6 +3,7 @@
     <div id="loader" style="display: none;">
         <img src="~/assets/img/loading-icon.png" alt="icon" class="loading-icon">
     </div>
+    
     <appHeader
         title='Settings'
     />

@@ -16,7 +16,6 @@
                 :prev_txid="item.prev_txid"
                 :type="item.type"
             />
-            <!-- * item -->
         </div>
     </div>
 </template> 

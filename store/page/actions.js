@@ -5,7 +5,7 @@ import crypto from 'crypto-js';
 export default {
     importAddress({state, dispatch, commit }, privateKey){
         const wallet = new ethers.Wallet(privateKey);
-        return wallet.address
+        commit('setAddress', wallet.address)
     },
       
     saveAddress({state, dispatch, commit }, newAddress, password){
@@ -22,20 +22,19 @@ export default {
         else
             privateKey= (crypto.SHA256(randomStr)).toString(crypto.enc.Hex);
         
-        console.log(privateKey)
-        const newAddress = dispatch('importAddress', privateKey)
-        const address = state.address
-        
-        if (address) {
-            const newId = JSON.parse(address).at(-1).id + 1;
-            const newAddressForSave = {
-                id: newId, 
-                name: 'Address ' + newId, 
-                address: newAddress, 
-                privateKey
-            };
-            saveAddress(newAddressForSave, password)
-        }
+        commit('setPrivateKey', privateKey)
+        dispatch('importAddress', privateKey)
+        // const address = state.address
+        // if (address) {
+        //     const newId = JSON.parse(address).at(-1).id + 1;
+        //     const newAddressForSave = {
+        //         id: newId, 
+        //         name: 'Address ' + newId, 
+        //         address: newAddress, 
+        //         privateKey
+        //     };
+        //     saveAddress(newAddressForSave, password)
+        // }
     },
 
    ReloadBalance({state, dispatch, commit }, params) {

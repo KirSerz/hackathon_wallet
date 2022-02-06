@@ -15,9 +15,9 @@
                     </div>
                     <div class="right">
                         <div class="input-group mb-2">
-                            <div>
+                            <a href="/settings">
                                 {{account}}
-                            </div>
+                            </a>
                             <div>
                                  ({{address}})
                                 <a href="https://dash.fluence.dev/">
