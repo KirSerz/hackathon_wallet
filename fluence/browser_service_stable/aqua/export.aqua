@@ -1,3 +1,3 @@
 module Export
-import NodeValidatorService, sendTestTx, sendTx from "node"
-export NodeValidatorService, sendTestTx, sendTx
+import NodeValidatorService, sendTestTx, sendTx, confirmTx, getLatest from "node"
+export NodeValidatorService, sendTestTx, sendTx, confirmTx, getLatest

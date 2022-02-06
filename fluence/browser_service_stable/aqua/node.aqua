@@ -1,4 +1,4 @@
-module Messaging declares NodeValidatorService, sendTestTx, sendTx
+module Messaging declares NodeValidatorService, sendTestTx, sendTx, confirmTx, getLatest
 
 service NodeValidatorService("node"):
     receive_tx(str: string) -> string
@@ -11,3 +11,11 @@ func sendTestTx(msg: string):
 func sendTx(msg: string, peerId: string, relayPeerId: string):
     on peerId via relayPeerId:
         NodeValidatorService.receive_tx(msg)
+
+func confirmTx(msg: string, peerId: string, relayPeerId: string):
+    on peerId via relayPeerId:
+        NodeValidatorService.receive_signs(msg)
+
+func getLatest(address: string, peerId: string, relayPeerId: string):
+    on peerId via relayPeerId:
+        NodeValidatorService.get_latest_tx_for_address(address)
