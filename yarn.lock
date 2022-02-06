@@ -2339,10 +2339,15 @@ bootstrap-vue@^2.21.2:
     portal-vue "^2.1.7"
     vue-functional-data-merge "^3.1.0"
 
-"bootstrap@>=4.5.3 <5.0.0", bootstrap@^4.6.1:
+"bootstrap@>=4.5.3 <5.0.0":
   version "4.6.1"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.1.tgz#bc25380c2c14192374e8dec07cf01b2742d222a2"
   integrity sha512-0dj+VgI9Ecom+rvvpNZ4MUZJz8dcX7WCX+eTID9+/8HgOkv3dsRzi8BGeZJCQU6flWQVYxwTQnEZFrmJSEO7og==
+
+bootstrap@^5.1.3:
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.1.3.tgz#ba081b0c130f810fa70900acbc1c6d3c28fa8f34"
+  integrity sha512-fcQztozJ8jToQWXxVuEyXWW+dSo8AiXWKwiSSrKWsRB/Qt+Ewwza+JWoLKiTuQLaEPhdNAJ7+Dosc9DOIqNy7Q==
 
 boxen@^5.0.1:
   version "5.1.2"
@@ -4568,6 +4573,11 @@ human-signals@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
+
+icons-css-ion@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/icons-css-ion/-/icons-css-ion-1.0.0.tgz#060699e381b1158a1bbe15005a3e3cfb3a1b37ae"
+  integrity sha512-fqjkD4KBCoX0HYCbjbjmmgq+qFx9fONF73J/0fpgpxdBEaUCTvVei8eFHz9Aj58QbOYCahKIrYtvdopEJOwx4g==
 
 iconv-lite@^0.4.24:
   version "0.4.24"
@@ -9153,6 +9163,11 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
+
+vue-ionicons@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/vue-ionicons/-/vue-ionicons-3.0.5.tgz#4c3cd6efc91738d760c30e663c89932e4304e5fa"
+  integrity sha512-1zZN/mcLRk6XKmQYMue699ut99qVMm+YfB3TY6jcTuzLSYh76BS9CcToLX/9v/0aOf8aTKHAPx2USdNBaY9IRw==
 
 vue-loader@^15.9.7:
   version "15.9.8"

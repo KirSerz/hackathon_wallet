@@ -25,6 +25,12 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+
+    { src: '~/plugins/bootstrap-vue', ssr: false,   bootstrapVue: {
+      // Add the icon plugin to the `componentsPlugins` array
+      componentPlugins: ['IconsPlugin']
+    }},
+    { src: '~/plugins/vue-ionicons', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -36,8 +42,8 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
+    // https://go.nuxtjs.dev/bootstrap
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

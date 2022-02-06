@@ -1,17 +1,16 @@
 <template>
   <div>
     <appHeader/>
-    <Capsule/>
-    <Stats/>
-    <Transactions/>
+    <Transactions
+    :is_all='true'
+    />
   </div>
 </template>
 
 <script>
 
-import Capsule from '~/components/Main/Capsule'
-import appHeader from '~/components/Main/appHeader'
-import Stats from '~/components/Main/Stats'
+import appHeader from '~/components/Settings/appHeader'
+
 import Transactions from '~/components/Main/Transactions'
 // import '~/assets/css/splide.min.css'
 import '~/assets/css/style.css'
@@ -19,13 +18,8 @@ import '~/assets/css/style.css'
 export default {
   name: 'IndexPage',
   components: {
-    Capsule,
     appHeader,
-    Stats,
     Transactions,
   },
 }
 </script>
-
-<style scoped>
-</style>
