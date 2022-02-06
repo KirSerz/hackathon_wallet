@@ -1,0 +1,11 @@
+module Messaging declares NodeValidatorService, sendTestTx, sendTx
+
+service NodeValidatorService("node"):
+    receive_tx(str: string)
+
+func sendTestTx(msg: string):
+    NodeValidatorService.receive_tx(msg)
+
+func sendTx(msg: string, peerId: string, relayPeerId: string):
+    on peerId via relayPeerId:
+        NodeValidatorService.receive_tx(msg)
