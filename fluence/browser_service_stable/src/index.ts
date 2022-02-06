@@ -9,15 +9,15 @@ import {verifyState, createNodePk, createTx, validateNewTx, validatePending} fro
 
 var state: {[type:string]: {[txid:string]:any}} = {
     'txs': {
-        '0x0': {
+        '0x0': { // genesis
             to: '0x184f8d267CBD46F94fefE24597f21Aee53F829aa',
             amount: 10000,
         },
-        '0xb20ef37e74f703af67bcb7369078e309de46b8bcd71ce9aeb54458828487928b': {
+        '0xb20ef37e74f703af67bcb7369078e309de46b8bcd71ce9aeb54458828487928b': { // test
             from: '0x184f8d267CBD46F94fefE24597f21Aee53F829aa',
             to: '0x4163effA99D027BEe32539D1783932F4D20469de',
             amount: 100,
-            prev_tx: '0x0', // genesis
+            prev_tx: '0x0', 
             txid: '0xb20ef37e74f703af67bcb7369078e309de46b8bcd71ce9aeb54458828487928b',
             sign: '0x7f62ffbb30bbff51b6bf6c10b1549fc7df2e09cc4c6431bf9dd8c6f4cdbeb5c85cfc15eb34fa9630961f299a4061f27d4e27be2801ae95175bb3ce5f87df100f1b'
         }
@@ -73,8 +73,9 @@ async function main() {
     // =====
     // first we need to check all state
     verifyState(state);
+    // console.log(state);
     // and syncronize with other nodes
-
+    // TODO: here
     // =====
     registerNodeValidatorService({
         async receive_tx(str) {
@@ -96,12 +97,37 @@ async function main() {
             }
         },
         get_latest_tx_for_address(address) {
+            console.log(address);
             if (address in state['address_latest_txids_and_locks']) {
+                console.log('respond = ' + state['address_latest_txids_and_locks'][address]['latest_txid']);
                 return state['address_latest_txids_and_locks'][address]['latest_txid'];
+            } else {
+                console.log('respond = 0');
+                return '0x0';
+            }
+        },
+        get_address_info(address) {
+            if (address in state['address_latest_txids_and_locks']) {
+                return JSON.stringify({'address': address, 'balance': state['balances'][address], })
+            } else {
+                return '0';
+            }
+        },
+        get_transaction(tx) {
+            if (tx in state['address_latest_txids_and_locks']) {
+                return state['address_latest_txids_and_locks'][tx]['latest_txid'];
+            } else {
+                return '0';
+            }
+        }, 
+        get_signs_of_transaction(tx) {
+            if (tx in state['address_latest_txids_and_locks']) {
+                return state['address_latest_txids_and_locks'][tx]['latest_txid'];
             } else {
                 return '0';
             }
         }
+
     });
 
     process.stdin.setRawMode(true);

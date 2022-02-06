@@ -38,8 +38,7 @@ TODO:
 
 informational functions:
 - `getLatest`(address) returns latest txid of address(if it exists)
-- `getAddressInfo`(address) returns from sqlite - balance and last txid
-- `getAddressTransactions`(address) returns from sqlite - list of txids
+- `getAddressInfo`(address) returns from state
 - `getTransaction`(txid) returns (from, to, amount, sign, txid, prev_txid)
 - `getSignsOfTransaction`(txid) returns list of signs
 

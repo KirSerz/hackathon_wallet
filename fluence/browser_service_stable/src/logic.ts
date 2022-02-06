@@ -86,7 +86,11 @@ export function verifyState(state:any) {
                 // check balance
                 if (tx['from'] in state['balances'] && state['balances'][tx['from']] >= tx['amount']) {
                     state['balances'][tx['from']] -= tx['amount'];
-                    state['balances'][tx['to']] += tx['amount'];
+                    if (tx['to'] in state['balances']) {
+                        state['balances'][tx['to']] += tx['amount'];
+                    } else {
+                        state['balances'][tx['to']] = tx['amount'];
+                    }
                 } else {
                     throw 'not enough balance';
                 }
@@ -119,8 +123,10 @@ export async function validateNewTx(str:string, pk:string, state: any) {
         throw 'address already locked by txid ' + state['address_latest_txids_and_locks'][tx['from']]['locked_by'];
     }
     // checks
-    if (tx['prev_tx'] !== state['address_latest_txids_and_locks'][tx['from']]['latest_txid']) {
-        throw 'bad prev_tx ' + tx['prev_tx'] + ' ' + state['address_latest_txids_and_locks'][tx['from']]['latest_txid'];
+    if (tx['from'] in state['address_latest_txids_and_locks']) {
+        if (tx['prev_tx'] !== state['address_latest_txids_and_locks'][tx['from']]['latest_txid']) {
+            throw 'bad prev_tx ' + tx['prev_tx'] + ' ' + state['address_latest_txids_and_locks'][tx['from']]['latest_txid'];
+        }
     }
     // check from and to
     ethers.utils.getAddress(tx['from']);

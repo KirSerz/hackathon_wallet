@@ -22,8 +22,9 @@ async function main() {
     // TODO: get latest tx
     let latest_tx = await getLatest(wallet.address, '12D3KooWBecVqhrKqVkJ1ALtVTYRi5vmbqKxQiT2EfnNgNdBWzqS', '12D3KooWJd3HaMJ1rpLY1kQvcjRPEvnDwcXrH8mJvk7ypcZXqXGE');
     console.log(latest_tx);
+    // IF THERE IS NO PREVIOUS TX - use 0x0
     let tx = await createTx(wallet.address, '0x184f8d267CBD46F94fefE24597f21Aee53F829aa', 2, latest_tx, pk);
-    console.log(await sendTx(JSON.stringify(tx), '12D3KooWBecVqhrKqVkJ1ALtVTYRi5vmbqKxQiT2EfnNgNdBWzqS', '12D3KooWJd3HaMJ1rpLY1kQvcjRPEvnDwcXrH8mJvk7ypcZXqXGE'));
+    // console.log(await sendTx(JSON.stringify(tx), '12D3KooWBecVqhrKqVkJ1ALtVTYRi5vmbqKxQiT2EfnNgNdBWzqS', '12D3KooWJd3HaMJ1rpLY1kQvcjRPEvnDwcXrH8mJvk7ypcZXqXGE'));
     
     process.stdin.setRawMode(true);
     process.stdin.resume();

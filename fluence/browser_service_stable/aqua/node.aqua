@@ -1,4 +1,4 @@
-module Messaging declares NodeValidatorService, sendTestTx, sendTx, confirmTx, getLatest
+module Messaging declares NodeValidatorService, sendTestTx, sendTx, confirmTx, getLatest, getAddressInfo, getTransaction, getSignsOfTransaction
 -- import initTopicAndSubscribe, findSubscribers from "@fluencelabs/aqua-dht/pubsub.aqua"
 -- import "@fluencelabs/aqua-dht/dht.aqua"
 
@@ -6,6 +6,9 @@ service NodeValidatorService("node"):
     receive_tx(str: string) -> string
     receive_signs(str: string) -> string
     get_latest_tx_for_address(address: string) -> string
+    get_address_info(address: string) -> string
+    get_transaction(tx: string) -> string
+    get_signs_of_transaction(tx: string) -> string
 
 func sendTestTx(msg: string):
     NodeValidatorService.receive_tx(msg)
@@ -18,9 +21,22 @@ func confirmTx(msg: string, peerId: string, relayPeerId: string):
     on peerId via relayPeerId:
         NodeValidatorService.receive_signs(msg)
 
-func getLatest(address: string, peerId: string, relayPeerId: string):
+func getLatest(address: string, peerId: string, relayPeerId: string) -> string:
     on peerId via relayPeerId:
-        NodeValidatorService.get_latest_tx_for_address(address)
+        res <- NodeValidatorService.get_latest_tx_for_address(address)
+    <- res
+
+func getAddressInfo(address: string, peerId: string, relayPeerId: string):
+    on peerId via relayPeerId:
+        NodeValidatorService.get_address_info(address)
+
+func getTransaction(tx: string, peerId: string, relayPeerId: string):
+    on peerId via relayPeerId:
+        NodeValidatorService.get_transaction(tx)
+
+func getSignsOfTransaction(tx: string, peerId: string, relayPeerId: string):
+    on peerId via relayPeerId:
+        NodeValidatorService.get_signs_of_transaction(tx)
 
 -- func advertiseMyself(topic: string) -> string:
 --     relay_id: ?string
