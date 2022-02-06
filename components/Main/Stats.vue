@@ -4,13 +4,13 @@
             <div class="col-6">
                 <div class="stat-box">
                     <div class="title">Income</div>
-                    <div class="value text-success">{{income}}</div>
+                    <div class="value text-success">{{income}} {{symbol}}</div>
                 </div>
             </div>
             <div class="col-6">
                 <div class="stat-box">
                     <div class="title">Expenses</div>
-                    <div class="value text-danger">{{expenses}}</div>
+                    <div class="value text-danger">{{expenses}} {{symbol}}</div>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@ export default {
     return {}
   },
   computed: {
-    ...mapState('page', ['income', 'expenses', 'transaction_count']),
+    ...mapState('page', ['income', 'expenses', 'transaction_count', 'symbol']),
  },
   methods: {
   }

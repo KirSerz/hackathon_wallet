@@ -38,14 +38,14 @@ export default {
   },
   watch: {
     address(){
-      this.getTransactionsInfo()
+      this.getAddressTransactions()
     }
   },
   mounted() {
-    this.getTransactionsInfo()
+    this.getAddressTransactions()
   },
   methods: {
-    ...mapActions('page', ['getTransactionsInfo']),
+    ...mapActions('page', ['getAddressTransactions']),
   }
 }
 </script>

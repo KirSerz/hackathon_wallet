@@ -35,6 +35,9 @@ export default {
     setTransactionCount(state, value){
         state.transaction_count = value
     },
+    setPrivateKey(state, value){
+        state.private_key = value
+    },
     pushTransaction(state, value){
         let buff = state.transactions;
         buff.push(value);

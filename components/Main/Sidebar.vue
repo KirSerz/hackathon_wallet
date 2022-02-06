@@ -10,8 +10,6 @@
                 </div>
                 <div class="modal-body">
                     <div class="action-sheet-content text-center">
-                        <div class="mb-1"><img src="assets/img/icon/192x192.png" alt="image" class="imaged w64 mb-2">
-                        </div>
                         <div>
                             Install <strong>Wallet</strong> on your iPhone's home screen.
                         </div>

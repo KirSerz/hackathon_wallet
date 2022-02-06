@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="right">
-            <div  v-if="type === 1" class="price text-danger">
+            <div  v-if="type === 0" class="price text-danger">
                 - {{amount}}
             </div>
             <div v-else class="price text-success">
